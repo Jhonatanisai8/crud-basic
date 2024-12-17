@@ -1,6 +1,7 @@
 package models;
 
 public class Persona {
+    private Long idPersona;
     private String nombre;
     private String apellido;
     private String dni;
@@ -9,7 +10,8 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "\nNombre: " + getNombre()
+        return "Id Persona: " + getIdPersona()
+                + "\nNombre: " + getNombre()
                 + "\nApellido: " + getApellido()
                 + "\nDni: " + getDni()
                 + "\nTelefono: " + getTelefono()
@@ -31,6 +33,14 @@ public class Persona {
 
     public String getApellido() {
         return apellido;
+    }
+
+    public Long getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(Long idPersona) {
+        this.idPersona = idPersona;
     }
 
     public void setApellido(String apellido) {
