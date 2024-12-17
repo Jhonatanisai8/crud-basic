@@ -8,16 +8,26 @@ public class Persona {
     private String telefono;
     private Ciudad ciudad;
 
+    
+
+    public Persona(String nombre, String apellido, String dni, String telefono) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.telefono = telefono;
+    }
+
     @Override
     public String toString() {
-        return "Id Persona: " + getIdPersona()
+        return "----------------------" +
+                "\nId Persona: " + getIdPersona()
                 + "\nNombre: " + getNombre()
                 + "\nApellido: " + getApellido()
                 + "\nDni: " + getDni()
-                + "\nTelefono: " + getTelefono()
-                + "\nId Ciudad: " + getCiudad().getIdCiudad()
-                + "\nCiudad: " + getCiudad().getNombreCiudad()
-                + "\nUbicacion: " + getCiudad().getUbicacion();
+                + "\nTelefono: " + getTelefono();
+        // + "\nId Ciudad: " + getCiudad().getIdCiudad()
+        // + "\nCiudad: " + getCiudad().getNombreCiudad()
+        // + "\nUbicacion: " + getCiudad().getUbicacion();
     }
 
     public Persona() {
