@@ -9,6 +9,11 @@ public class Ciudad {
 
     }
 
+    public Ciudad(String nombreCiudad, String ubicacion) {
+        this.nombreCiudad = nombreCiudad;
+        this.ubicacion = ubicacion;
+    }
+
     public Long getIdCiudad() {
         return idCiudad;
     }
