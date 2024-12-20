@@ -14,8 +14,10 @@ public class App {
     static PersonaDaoImple REPO_PERSONA = new PersonaDaoImple();
 
     public static void main(String[] args) throws Exception {
-        listarPersonas();
-        buscarPersona();
+        // listarPersonas();
+        // buscarPersona();
+        listarCiudades();
+        buscarCiudad();
     }
 
     public static void insertandoCiudades() {
@@ -158,4 +160,14 @@ public class App {
 
     }
 
+    public static void buscarCiudad(){
+        System.out.println("\tBUSCANDO UNA CIUDAD");
+        Long id = 4l;
+        Ciudad ciudad = REPO.buscar(REPO.listar(), id);
+        if (ciudad != null) {
+            System.out.println(ciudad.toString());
+        } else {
+            System.out.println("NO ENCONTRADO");            
+        }
+    }
 }
