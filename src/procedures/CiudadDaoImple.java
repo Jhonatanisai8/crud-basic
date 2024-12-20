@@ -3,6 +3,9 @@ package procedures;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import data.ConexionBD;
@@ -10,6 +13,7 @@ import models.Ciudad;
 
 public class CiudadDaoImple implements Repositorio<Ciudad> {
     final static String SQL_INSERT = "INSERT INTO ciudad (nombre_ciudad,ubicacion) VALUES (?,?)";
+    final static String SQL_SELECT = "SELECT id_ciudad,nombre_ciudad,ubicacion FROM ciudad";
 
     @Override
     public boolean insertar(Ciudad ciudad) {
@@ -27,6 +31,21 @@ public class CiudadDaoImple implements Repositorio<Ciudad> {
 
     @Override
     public List<Ciudad> listar() {
-        return null;
+        List<Ciudad> listaCiudades = new ArrayList<>();
+        try (Connection con = ConexionBD.getConexion();
+                Statement st = con.createStatement();
+                ResultSet rs = st.executeQuery(SQL_SELECT)) {
+            while (rs.next()) {
+                Ciudad ciudad = new Ciudad();
+                ciudad.setIdCiudad(rs.getLong("id_ciudad"));
+                ciudad.setNombreCiudad(rs.getString("nombre_ciudad"));
+                ciudad.setUbicacion(rs.getString("ubicacion"));
+                listaCiudades.add(ciudad);
+            }
+        } catch (Exception e) {
+            System.out.println("Error al listar las ciudades: " + e.getMessage());
+        }
+
+        return listaCiudades;
     }
 }
