@@ -40,7 +40,8 @@ public class Ciudad {
 
     @Override
     public String toString() {
-        return "Id Ciudad: " + getIdCiudad()
+        return "--------------------------" +
+                "\nId Ciudad: " + getIdCiudad()
                 + "\nNombre Ciudad: " + getNombreCiudad()
                 + "\nUbicacion: " + getUbicacion();
     }
