@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import data.ConexionBD;
 import models.Persona;
@@ -14,6 +15,7 @@ public class PersonaDaoImple implements Repositorio<Persona> {
 
     private static final String SQL_INSERT = "INSERT INTO persona(nombre,apellido,dni,telefono) VALUES (?,?,?,?)";
     private static final String SQL_SELECT = "SELECT id_persona,nombre,apellido,dni,telefono FROM persona";
+    private static final String SQL_BUSCAR = "SELECT id_persona,nombre,apellido,dni,telefono FROM persona WHERE id_persona = ?";
 
     private Connection conectar() {
         return ConexionBD.getConexion();
@@ -57,5 +59,20 @@ public class PersonaDaoImple implements Repositorio<Persona> {
         }
         return listaPersonas;
 
+    }
+
+    @Override
+    public Persona buscar(List<Persona> lista, Long id) {
+        Optional<Persona> personaBuscada = lista
+                .stream()
+                .filter(t -> t.getIdPersona() == id)
+                .findFirst();
+        return personaBuscada.get();
+    }
+
+    @Override
+    public boolean modificar(Persona t) {
+        // TODO Auto-generated method stub
+        return false;
     }
 }
