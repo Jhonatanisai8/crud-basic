@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import data.ConexionBD;
 import models.Ciudad;
@@ -47,5 +48,18 @@ public class CiudadDaoImple implements Repositorio<Ciudad> {
         }
 
         return listaCiudades;
+    }
+
+    @Override
+    public Ciudad buscar(List<Ciudad> listaCiudads, Long id) {
+        Optional<Ciudad> ciudadBuscada = listaCiudads
+                .stream()
+                .filter(t -> t.getIdCiudad() == id)
+                .findFirst();
+        return ciudadBuscada.get();
+    }
+    @Override
+    public boolean modificar(Ciudad t) {
+        
     }
 }
