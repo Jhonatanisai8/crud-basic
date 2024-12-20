@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.Ciudad;
-import models.Persona;
 import procedures.CiudadDaoImple;
-import procedures.PersonaDaoImple;
 
 public class App {
+    static CiudadDaoImple REPO = new CiudadDaoImple();
     public static void main(String[] args) throws Exception {
+        
     }
 
     public static void insertandoCiudades() {
-        CiudadDaoImple REPO = new CiudadDaoImple();
         List<Ciudad> ciudades = new ArrayList<>();
         ciudades.add(new Ciudad("Lima", "Perú"));
         ciudades.add(new Ciudad("Buenos Aires", "Argentina"));
@@ -130,5 +129,9 @@ public class App {
             }
         }
 
+    }
+
+    public static void listarCiudades(){
+        REPO.listar().forEach(t -> System.out.println(t));
     }
 }
