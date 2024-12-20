@@ -10,6 +10,9 @@ import procedures.PersonaDaoImple;
 
 public class App {
     public static void main(String[] args) throws Exception {
+    }
+
+    public static void insertandoCiudades() {
         CiudadDaoImple REPO = new CiudadDaoImple();
         List<Ciudad> ciudades = new ArrayList<>();
         ciudades.add(new Ciudad("Lima", "Perú"));
@@ -126,5 +129,6 @@ public class App {
                 System.out.println("Insertando......");
             }
         }
+
     }
 }
