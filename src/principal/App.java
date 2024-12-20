@@ -2,14 +2,20 @@ package principal;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import models.Ciudad;
+import models.Persona;
 import procedures.CiudadDaoImple;
+import procedures.PersonaDaoImple;
 
 public class App {
     static CiudadDaoImple REPO = new CiudadDaoImple();
+    static PersonaDaoImple REPO_PERSONA = new PersonaDaoImple();
+
     public static void main(String[] args) throws Exception {
-        
+        listarPersonas();
+        buscarPersona();
     }
 
     public static void insertandoCiudades() {
@@ -131,7 +137,25 @@ public class App {
 
     }
 
-    public static void listarCiudades(){
+    public static void listarCiudades() {
         REPO.listar().forEach(t -> System.out.println(t));
     }
+
+    public static void listarPersonas() {
+        System.out.println("\tLISTA DE PERSONAS");
+        REPO_PERSONA.listar().forEach(t -> System.out.println(t));
+    }
+
+    public static void buscarPersona() {
+        System.out.println("\nBUSCANDO PERSONAS");
+        Long id = 3l;
+        Persona p = REPO_PERSONA.buscar(REPO_PERSONA.listar(), id);
+        if (p != null) {
+            System.out.println(p.toString());
+        } else {
+            System.out.println("Persona no Encontrada");
+        }
+
+    }
+
 }
